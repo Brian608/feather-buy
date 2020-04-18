@@ -1,0 +1,47 @@
+server:
+  port: 8777
+spring:
+  application:
+      name: stock-service
+  profiles:
+      active: dev
+  cloud:
+      config:
+          profile: dev
+          discovery:
+            enabled: true
+            service-id: config-server
+
+sharding:
+  jdbc:
+    datasource:
+      names: ds
+      ds:
+        name: stock
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        filters: stat
+        maxActive: 20
+        initialSize: 1
+        maxWait: 60000
+        minIdle: 1
+        timeBetweenEvictionRunsMillis: 60000
+        minEvictableIdleTimeMillis: 300000
+        validationQuery: select 'x'
+        testWhileIdle: true
+        testOnBorrow: false
+        testOnReturn: false
+        poolPreparedStatements: true
+        maxOpenPreparedStatements: 20
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://111.231.204.163:8888/eureka,http://111.231.204.163:8889/eureka
+  instance:
+    ip-address: 116.196.70.116
+    prefer-ip-address: true
+
+#log
+logging:
+    config: classpath:logback.xml

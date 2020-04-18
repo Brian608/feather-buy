@@ -1,0 +1,40 @@
+server:
+  port: 8004
+
+spring:
+  application:
+    name: gateway
+  profiles:
+    active: dev
+  cloud:
+    config:
+      profile: dev
+      discovery:
+        enabled: true
+        service-id: config-server
+
+zuul:
+  routes:
+    user:
+      path: /user/**
+      serviceId: user-service
+      stripPrefix: false
+ribbon:
+  ReadTimeout: 5000
+  ConnectTimeout: 5000
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 3000
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://111.231.204.163:8888/eureka,http://111.231.204.163:8889/eureka
+
+#log
+logging:
+    config: classpath:logback.xml

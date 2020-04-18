@@ -1,0 +1,30 @@
+spring:
+  cloud:
+    stream:
+      kafka:
+         binder:
+            brokers: ${kafka.brokers.host}
+            zk-nodes: ${zookeeper.host}
+            auto-create-topics: true
+  datasource:
+    stock:
+      url: jdbc:mysql://47.94.233.194:3306/feather-buy-stock
+      username: root
+      password: root
+    trade:
+      url: jdbc:mysql://47.94.233.194:3306/feather-buy-trade
+      username: root
+      password: root
+    user:
+      url: jdbc:mysql://47.94.233.194:3306/feather-buy-user
+      username: root
+      password: root
+
+
+regCenter:
+  serverList: ${zookeeper.host}
+  namespace: elastic-job-lite-springboot
+stockJob:
+  cron: 0 0/3 * * * ?
+  shardingTotalCount: 1 #2
+  shardingItemParameters: 0=Chengdu #,1=Beijing

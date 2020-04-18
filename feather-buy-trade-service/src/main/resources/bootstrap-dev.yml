@@ -1,0 +1,32 @@
+spring:
+  cloud:
+    stream:
+      kafka:
+         binder:
+            brokers: ${kafka.brokers.host}
+            zk-nodes: ${zookeeper.host}
+            auto-create-topics: true
+            requiredAcks: -1
+      bindings:
+         output:
+           destination: dis-transation
+           content-type: text/plain
+  redis:
+    url: ${redis.host}
+    password: ${redis.auth}
+
+
+sharding:
+  jdbc:
+    datasource:
+      ds:
+        url: jdbc:mysql://47.94.233.194:3306/feather-buy-trade
+        username: root
+        password: MyNewPass4!
+
+
+zk:
+  host: ${zookeeper.host}
+
+es:
+  host: ${elastic.search.host}

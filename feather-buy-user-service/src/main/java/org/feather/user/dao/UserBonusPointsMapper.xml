@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.feather.user.dao.UserBonusPointsMapper" >
+  <resultMap id="BaseResultMap" type="org.feather.user.entity.UserBonusPoints" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="user_uuid" property="userUuid" jdbcType="BIGINT" />
+    <result column="points" property="points" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_uuid, points
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_bonus_points
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user_bonus_points
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.feather.user.entity.UserBonusPoints" >
+    insert into user_bonus_points (id, user_uuid, points
+      )
+    values (#{id,jdbcType=INTEGER}, #{userUuid,jdbcType=BIGINT}, #{points,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.feather.user.entity.UserBonusPoints" >
+    insert into user_bonus_points
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userUuid != null" >
+        user_uuid,
+      </if>
+      <if test="points != null" >
+        points,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userUuid != null" >
+        #{userUuid,jdbcType=BIGINT},
+      </if>
+      <if test="points != null" >
+        #{points,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.feather.user.entity.UserBonusPoints" >
+    update user_bonus_points
+    <set >
+      <if test="userUuid != null" >
+        user_uuid = #{userUuid,jdbcType=BIGINT},
+      </if>
+      <if test="points != null" >
+        points = #{points,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.feather.user.entity.UserBonusPoints" >
+    update user_bonus_points
+    set user_uuid = #{userUuid,jdbcType=BIGINT},
+      points = #{points,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

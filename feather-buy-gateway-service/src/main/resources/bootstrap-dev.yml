@@ -1,0 +1,15 @@
+spring:
+  cloud:
+    stream:
+      kafka:
+         binder:
+            brokers: ${kafka.brokers.host}
+            zk-nodes: ${zookeeper.host}
+            auto-create-topics: true
+  redis:
+    url: ${redis.host}
+    password: ${redis.auth}
+
+
+
+

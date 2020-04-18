@@ -1,0 +1,33 @@
+
+server:
+  port: 8001
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: ˙
+          username:
+          password:
+          search-paths: gateway-config,user-service-config,trade-service-config,stock-service-config,common-config,key-generator-config,scheduler-config
+    bus:
+      trace:
+        enabled: true
+    stream:
+      kafka:
+        binder:
+          brokers: 47.93.236.80:9092
+          zk-nodes: 47.93.236.80:5181
+          auto-create-topics: true
+management:
+  security:
+    enabled: false
+eureka:
+  client:
+    service-url:
+      defaultZone: http://111.231.204.163:8888/eureka,http://111.231.204.163:8889/eureka
+  instance:
+    ip-address: 116.196.70.116
+    prefer-ip-address: true

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="feather-buy-user-service" />
+        <module name="feather-buy-trade-service" />
+        <module name="feather-buy-keygen-service" />
+        <module name="feather-buy-config-server" />
+        <module name="feather-buy-stock-service" />
+        <module name="feather-buy-service-registry" />
+        <module name="feather-buy-scheduler-service" />
+        <module name="feather-buy-gateway-service" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="feather-buy-config-server" options="" />
+      <module name="feather-buy-gateway-service" options="" />
+      <module name="feather-buy-keygen-service" options="" />
+      <module name="feather-buy-scheduler-service" options="" />
+      <module name="feather-buy-stock-service" options="" />
+      <module name="feather-buy-trade-service" options="" />
+      <module name="feather-buy-user-service" options="" />
+    </option>
+  </component>
+</project>
